@@ -1,0 +1,45 @@
+{
+  "os": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "CPython 3.11.11",
+  "startedAt": "2025-04-11T13:45:50.867741Z",
+  "args": [
+    "--track",
+    "--capture-video"
+  ],
+  "program": "/home/sakura/rl train/PPO/ppo-implementation/ppo.py",
+  "codePath": "ppo.py",
+  "git": {
+    "remote": "https://github.com/Sakure123/ppo-implementation.git",
+    "commit": "11f7c842e3a62c47ee9eb68e0973330b68d70708"
+  },
+  "email": "wpx20101220@whut.edu.cn",
+  "root": "/home/sakura/rl train/PPO/ppo-implementation",
+  "host": "PXX",
+  "executable": "/home/sakura/miniconda3/envs/r_l/bin/python",
+  "codePathLocal": "ppo.py",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "gpu": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "269427478528",
+      "used": "25046429696"
+    }
+  },
+  "memory": {
+    "total": "7902412800"
+  },
+  "cpu": {
+    "count": 8,
+    "countLogical": 16
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+      "memoryTotal": "4294967296",
+      "architecture": "Ampere"
+    }
+  ],
+  "cudaVersion": "12.8"
+}

@@ -1,0 +1,37 @@
+diff --git a/ppo.py b/ppo.py
+index 4935939..7098105 100644
+--- a/ppo.py
++++ b/ppo.py
+@@ -73,7 +73,11 @@ def make_env(gym_id,seed,idx,capture_video,run_name):
+             env = gym.make(gym_id,render_mode="rgb_array")
+             env = gym.wrappers.RecordEpisodeStatistics(env)
+             if capture_video:
+-                if idx==0:
++                 if 'render.modes' not in env.metadata:
++                    env.metadata['render.modes'] = []
++                 if 'rgb_array' not in env.metadata['render.modes']:
++                    env.metadata['render.modes'].append('rgb_array')
++                 if idx==0:
+                     env = gym.wrappers.RecordVideo(env, f"videos/{run_name}", episode_trigger=lambda x: x % 100 == 0)
+             env.reset(seed=seed)
+             env.action_space.seed(seed)
+@@ -122,7 +126,7 @@ if __name__ == "__main__":
+             sync_tensorboard=True,
+             config=vars(args),
+             name=run_name,
+-            
++            monitor_gym=True,
+             save_code=True,
+         )
+     writer = SummaryWriter(f"runs/{run_name}")
+@@ -177,8 +181,8 @@ if __name__ == "__main__":
+ 
+              if "episode" in info.keys():
+                      print(f"global_step={global_step}, episodic_return={sum(info['episode']['r'])}")
+-                     writer.add_scalar("charts/episodic_return", sum(info["episode"]["r"].item()), global_step)
+-                     writer.add_scalar("charts/episodic_length", sum(info["episode"]["l"].item()), global_step)
++                     writer.add_scalar("charts/episodic_return", sum(info["episode"]["r"]), global_step)
++                     writer.add_scalar("charts/episodic_length", sum(info["episode"]["l"]), global_step)
+              
+         with torch.no_grad():
+             next_value = agent.get_value(next_obs).reshape(1,-1)
